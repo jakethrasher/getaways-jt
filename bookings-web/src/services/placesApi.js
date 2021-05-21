@@ -1,6 +1,6 @@
 export const getPlaces = async () => {
   const response = await fetch(`${process.env.BASE_URL}/places`);
-  if (response.ok) {
+  if(response.ok) {
     const result = await response.json();
     return result.map(
       ({
@@ -20,4 +20,41 @@ export const getPlaces = async () => {
   } else {
     throw new Error(await response.json());
   }
+};
+
+export const signUpUser = async (name, email, password) => {
+  const response = await fetch(`${process.env.BASE_URL}/users/create`, {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json' },
+    body:JSON.stringify({
+      username:`${name}`,
+      email:`${email}`,
+      password:`${password}`,
+    })
+  });
+  const result = await response.json();
+  return result;
+};
+
+export const loginUser = async (email, password) => {
+  const response = await fetch(`${process.env.BASE_URL}/users/login`, {
+    method:'POST',
+    credentials:'include',
+    headers:{ 'Content-Type':'application/json' },
+    body:JSON.stringify({
+      email,
+      password
+    })
+  });
+  const result = await response.json();
+  return result;
+};
+
+export const logoutUser = async () => {
+  const response = await fetch(`${process.env.BASE_URL}/users/logout`, {
+    credentials:'include',
+  });
+
+  const json = await response.json();
+  return json;
 };
