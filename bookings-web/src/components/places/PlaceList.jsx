@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Place from './Place';
-
+import styles from './places.css'
 const PlaceList = ({ places }) => {
-  return places.map((place) => <Place key={place.id} {...place} />);
-};
 
+  return places.map((place) =>
+    <Place key={place.id} {...place} />
+  );
+};
+  
 PlaceList.propTypes = {
   places: PropTypes.arrayOf(
     PropTypes.shape({

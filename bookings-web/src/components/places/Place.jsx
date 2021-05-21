@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import styles from './places.css'
 const Place = ({
   name,
   description,
@@ -14,12 +14,12 @@ const Place = ({
   wifi,
 }) => {
   return (
-    <ul>
+    <ul className={styles.listItem}>
+      <img src={image} className={styles.listPageImage}/>
       <li>{name}</li>
       <li>{description}</li>
       <li>{location}</li>
       <li>{pricePerNight}</li>
-      <li>{image}</li>
       <li>{imageThumbnail}</li>
       <li>{maxGuests}</li>
       <li>{petFriendly ? 'Pet Friendly' : 'No Pets Allowed'}</li>
