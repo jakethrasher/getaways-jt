@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Place from './Place';
-import styles from './places.css'
+
 const PlaceList = ({ places }) => {
 
   return places.map((place) =>

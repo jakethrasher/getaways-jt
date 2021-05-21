@@ -1,8 +1,9 @@
 .listItem{
     list-style: none;
     width: 16em;
-    
+    margin: 1em;
 }
 .listPageImage{
     width: 16em;
+    border-radius: 0.5em;
 }

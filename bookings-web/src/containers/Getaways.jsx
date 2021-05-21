@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getPlaces } from '../services/placesApi';
 import PlaceList from '../components/places/PlaceList';
-import styles from './listPage.css'
+import styles from './listPage.css';
+
 const Getaways = () => {
   const [places, setPlaces] = useState([]);
 
@@ -14,7 +15,7 @@ const Getaways = () => {
       <PlaceList places={places} />
     </div>
 
-  )
+  );
 };
 
 export default Getaways;

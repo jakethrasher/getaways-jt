@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './places.css'
+import styles from './places.css';
+
 const Place = ({
   name,
   description,
   location,
   pricePerNight,
   image,
-  imageThumbnail,
   maxGuests,
   petFriendly,
   pool,
@@ -20,7 +20,6 @@ const Place = ({
       <li>{description}</li>
       <li>{location}</li>
       <li>{pricePerNight}</li>
-      <li>{imageThumbnail}</li>
       <li>{maxGuests}</li>
       <li>{petFriendly ? 'Pet Friendly' : 'No Pets Allowed'}</li>
       {pool ? <li>Has a Pool!</li> : null}
