@@ -81,8 +81,6 @@ export const createBooking = async (checkIn, checkOut, placeId) => {
       place_id: placeId,
     })
   });
-  console.log(response);
   const result = await response.json();
-  
-  return result;
+  return result; 
 };

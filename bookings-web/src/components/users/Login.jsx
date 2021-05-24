@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { loginUser } from '../../services/placesApi';
 
 export default function Login() {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMSG, setErrorMSG] = useState('');
-
+  
   const handleChange = ({ target }) => {
     if(target.name === 'email') setEmail(target.value);
     if(target.name === 'password') setPassword(target.value);
@@ -15,17 +16,18 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await loginUser(email, password);
-    if(user.status) setErrorMSG(user.message);
+    if(!user.status){
+      history.push('/getaways');
+    } else alert(user.message);
   };
   
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input name="email" type="text" placeholder="enter email" onChange={handleChange} required/>
-        <input name="password" type="text" placeholder="enter password" onChange={handleChange} required/>
+        <input name="email" value={email} type="text" placeholder="enter email" onChange={handleChange} required/>
+        <input name="password" value={password} type="text" placeholder="enter password" onChange={handleChange} required/>
         <button>Login</button>
       </form>
-      {errorMSG && <h1>{errorMSG}</h1>}
     </div>
   );
 }

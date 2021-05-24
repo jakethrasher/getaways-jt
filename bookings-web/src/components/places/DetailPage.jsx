@@ -15,12 +15,12 @@ export default function DetailPage() {
   const [place, setPlace] = useState({});
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
+  const [response, setResponse] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await createBooking(checkIn, 
-      checkOut, id);
-    console.log(response);
+    const result = await createBooking(checkIn, checkOut, id);
+    result.status ? setResponse(result.message) : setResponse(`You've booked ${place.name} from ${checkIn} to ${checkOut}`);
   };
 
   useEffect(() => {
@@ -31,47 +31,21 @@ export default function DetailPage() {
 
   const { name, image, description, location, pool, price_per_night: price, wifi } = place;
   return (
-    <Container style={{ display: 'flex' }}>
-      <Grid container item xs={6}>
+    <Container>
+      <Grid container>
         <Grid item xs={12}>
-          <Typography variant="h4" align="center">
+          <Typography variant="h4" align="left">
             {name}
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={6}>
           <img src={image} className={styles.detailImage}/>
         </Grid>
-        <Grid item xs={8}>
-          <Typography variant="body1">
-            {description}
-          </Typography>
-          <Typography variant="body1">
-            {location}
-          </Typography>
-        </Grid>
-        <Grid item xs={4} align="right">
-          <Typography variant="body1" >
-           Swimming Pool: { pool ? 'Yes' : 'No'}
-          </Typography>
-          <Typography variant="body1">
-           Wifi: { wifi ? 'Yes' : 'No'}
-          </Typography>
-          <Typography variant="body1">
-           $ {price} / night
-          </Typography>
-        </Grid>
-      </Grid>
-
-      <Divider orientation="vertical" flexItem/>
-
-      <Grid container item xs={6} direction="column">
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <Typography variant="h4" align="center">
             Booking
           </Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={styles.formStyle}>
             <TextField
               type="date"
               label="Check-in"
@@ -90,6 +64,26 @@ export default function DetailPage() {
             />
             <button>submit</button>
           </form>
+          <Typography variant="body1">
+            {response}
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="body1">
+            {description}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={6}></Grid>
+        <Grid item xs={12} sm={6}>
+          <Typography variant="body1" >
+           Swimming Pool: { pool ? 'Yes' : 'No'}
+          </Typography>
+          <Typography variant="body1">
+           Wifi: { wifi ? 'Yes' : 'No'}
+          </Typography>
+          <Typography variant="body1">
+           $ {price} / night
+          </Typography>
         </Grid>
       </Grid>
     </Container>    
