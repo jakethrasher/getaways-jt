@@ -1,25 +1,34 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPlaceById } from '../../services/placesApi';
+import { createBooking, getPlaceById } from '../../services/placesApi';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import styles from './places.css';
 import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
 
 export default function DetailPage() {
 
   const { id } = useParams();
   const [place, setPlace] = useState({});
-  
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setCheckOut] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await createBooking(checkIn, 
+      checkOut, id);
+    console.log(response);
+  };
+
   useEffect(() => {
     getPlaceById(id)
       .then(setPlace);
       
   }, []);
 
-  console.log(place);
   const { name, image, description, location, pool, price_per_night: price, wifi } = place;
   return (
     <Container style={{ display: 'flex' }}>
@@ -61,15 +70,28 @@ export default function DetailPage() {
             Booking
           </Typography>
         </Grid>
+        <Grid item xs={6}>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              type="date"
+              label="Check-in"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={(e) => setCheckIn(e.target.value)}
+            />
+            <TextField
+              type="date"
+              label="Checkout"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={(e) => setCheckOut(e.target.value)}
+            />
+            <button>submit</button>
+          </form>
+        </Grid>
       </Grid>
-      
-      
-    </Container>
-         
-     
+    </Container>    
   );
 }
-        
-           
-        
-      

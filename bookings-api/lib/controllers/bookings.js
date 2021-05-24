@@ -37,8 +37,8 @@ module.exports = Router()
         state: 'reserved',
         total_price: place.price_per_night * total_nights,
       });
-
-      res.json(booking);
+      console.log(booking);
+      res.send(booking);
     } catch (err) {
       next(err);
     }

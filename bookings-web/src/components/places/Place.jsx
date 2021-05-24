@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 });
 
 const Place = ({
-  id,
+
   name,
   description,
   location,

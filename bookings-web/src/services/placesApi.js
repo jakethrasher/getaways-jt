@@ -69,3 +69,20 @@ export const logoutUser = async () => {
   const json = await response.json();
   return json;
 };
+
+export const createBooking = async (checkIn, checkOut, placeId) => {
+  const response = await fetch(`${process.env.BASE_URL}/bookings/create`, {
+    method:'POST',
+    headers:{ 'Content-Type':'application/json' },
+    credentials:'include',
+    body:JSON.stringify({
+      start_date: checkIn,
+      end_date: checkOut,
+      place_id: placeId,
+    })
+  });
+  console.log(response);
+  const result = await response.json();
+  
+  return result;
+};
