@@ -52,6 +52,13 @@ module.exports = Router()
       next(err);
     }
   })
+  .put('/:id', async (req, res, next) => {
+    try {
+      
+    } catch (error) {
+      next(err)
+    }
+  })
   .get('/', async (req, res, next) => {
     try {
       const users = await User.find({});

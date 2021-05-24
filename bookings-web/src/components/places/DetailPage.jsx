@@ -36,6 +36,9 @@ export default function DetailPage() {
           <Typography variant="h4" align="left">
             {name}
           </Typography>
+          <Typography variant="h6" align="left">
+            {location}
+          </Typography>
         </Grid>
         <Grid item xs={6}>
           <img src={image} className={styles.detailImage}/>
