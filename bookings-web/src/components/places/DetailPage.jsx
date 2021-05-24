@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import styles from './places.css';
-import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 
 export default function DetailPage() {
@@ -29,9 +28,9 @@ export default function DetailPage() {
       
   }, []);
 
-  const { name, image, description, location, pool, price_per_night: price, wifi } = place;
+  const { name, image, description, location, pool, price_per_night: price, wifi, pet_friendly: pets } = place;
   return (
-    <Container>
+    <Container style={{ width:'90%' }}>
       <Grid container>
         <Grid item xs={12}>
           <Typography variant="h4" align="left">
@@ -64,7 +63,7 @@ export default function DetailPage() {
             />
             <button>submit</button>
           </form>
-          <Typography variant="body1">
+          <Typography variant="body1" align="center">
             {response}
           </Typography>
         </Grid>
@@ -80,6 +79,9 @@ export default function DetailPage() {
           </Typography>
           <Typography variant="body1">
            Wifi: { wifi ? 'Yes' : 'No'}
+          </Typography>
+          <Typography variant="body1">
+           Pets: { pets ? 'Yes' : 'No'}
           </Typography>
           <Typography variant="body1">
            $ {price} / night
