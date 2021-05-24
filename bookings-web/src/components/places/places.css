@@ -3,7 +3,22 @@
     width: 16em;
     margin: 1em;
 }
+.leftSection{
+    width: min-content;
+}
 .listPageImage{
     width: 16em;
     border-radius: 0.5em;
 }
+.containerGrid{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.detailImage{
+    width: 600px;
+}
+.infoText{
+    margin: 0px;
+}
+
+

@@ -2,7 +2,10 @@
 .listContainer{
     display: flex;
     flex-wrap: wrap;
-    font-family: 'Open Sans', sans-serif;;
+    justify-content: center;
+    max-width: 1440px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
     font-weight:300;
     font-size: smaller;
 }

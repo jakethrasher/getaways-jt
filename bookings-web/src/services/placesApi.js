@@ -22,6 +22,14 @@ export const getPlaces = async () => {
   }
 };
 
+export const getPlaceById = async (id) => {
+  const response = await fetch(`${process.env.BASE_URL}/places/${id}`);
+  if(response.ok){
+    const result = await response.json();
+    return result;
+  }
+};
+
 export const signUpUser = async (name, email, password) => {
   const response = await fetch(`${process.env.BASE_URL}/users/create`, {
     method:'POST',
@@ -46,15 +54,18 @@ export const loginUser = async (email, password) => {
       password
     })
   });
+  
   const result = await response.json();
   return result;
+ 
 };
+
 
 export const logoutUser = async () => {
   const response = await fetch(`${process.env.BASE_URL}/users/logout`, {
     credentials:'include',
   });
-
+  
   const json = await response.json();
   return json;
 };
