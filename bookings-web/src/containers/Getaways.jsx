@@ -4,8 +4,8 @@ import { getPlaces } from '../services/placesApi';
 import PlaceList from '../components/places/PlaceList';
 import styles from './listPage.css';
 import Container from '@material-ui/core/Container';
+import { CgArrowLeftO, CgArrowRightO } from 'react-icons/cg';
 
-import { CgArrowLeftO, CgArrowRightO} from "react-icons/cg"
 const Getaways = () => {
   const [places, setPlaces] = useState([]);
   const [page, setPage] = useState(0);
