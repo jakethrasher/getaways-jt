@@ -53,11 +53,11 @@ module.exports = Router()
       next(err);
     }
   })
-  .put('/:id',verifyToken, async (req, res, next) => {
-    const {username, email} = req.body
+  .put('/update',verifyToken, async (req, res, next) => {
+    const { username, email} = req.body
     try {
       const user = await User.findOneAndUpdate({
-        _id:req.params.id
+        _id:req.user.id
       },{
         username,
         email,
@@ -65,7 +65,7 @@ module.exports = Router()
         new: true,
       })
       res.send(user);
-    } catch (error) {
+    } catch (err) {
       next(err)
     }
   })

@@ -6,6 +6,7 @@ import Header from '../header/Header';
 import Signup from '../users/Signup';
 import Login from '../users/Login';
 import DetailPage from '../places/DetailPage';
+import UserUpdate from '../user update/UserUpdate';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route exact path="/getaways/:id" component={DetailPage}/>
         <Route exact path="/signup" component={Signup}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/update" component={UserUpdate}/>
       </Switch>
     </>
   );
