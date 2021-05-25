@@ -16,6 +16,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await loginUser(email, password);
+
+    console.log(user);
     if(!user.status){
       history.push('/getaways');
     } else alert(user.message);

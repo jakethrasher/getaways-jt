@@ -3,9 +3,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1440px;
     font-family: 'Open Sans', sans-serif;
-    margin: 0 auto;
     font-weight:300;
     font-size: smaller;
+}
+.pageButtonContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.pagination{
+    margin: 1em;
+} 
+.pagination:active{
+    transition: 80ms linear;
+    transform: scale(1.1);
+    border-radius: 100%;
+    box-shadow: rgba(52, 54, 55, 0.2) 0px 8px 24px;
 }

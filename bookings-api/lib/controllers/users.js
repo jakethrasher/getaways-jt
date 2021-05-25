@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Router } = require('express');
 const User = require('../models/User');
+const verifyToken = require('../utils/verify-token');
 
 const ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
 
@@ -52,9 +53,18 @@ module.exports = Router()
       next(err);
     }
   })
-  .put('/:id', async (req, res, next) => {
+  .put('/:id',verifyToken, async (req, res, next) => {
+    const {username, email} = req.body
     try {
-      
+      const user = await User.findOneAndUpdate({
+        _id:req.params.id
+      },{
+        username,
+        email,
+      },{
+        new: true,
+      })
+      res.send(user);
     } catch (error) {
       next(err)
     }

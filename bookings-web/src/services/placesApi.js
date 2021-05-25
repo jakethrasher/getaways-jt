@@ -1,7 +1,10 @@
-export const getPlaces = async () => {
+export const getPlaces = async (page) => {
   const response = await fetch(`${process.env.BASE_URL}/places`);
   if(response.ok) {
-    const result = await response.json();
+    const data = await response.json();
+    const i = page * 9;
+    const result = data.slice(i, i + 9);
+
     return result.map(
       ({
         price_per_night,
