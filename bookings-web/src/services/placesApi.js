@@ -59,10 +59,13 @@ export const loginUser = async (email, password) => {
   });
   
   const result = await response.json();
-  return result;
+  return {
+    id: result._id,
+    username: result.username, 
+    email: result.email,
+  };
  
 };
-
 
 export const logoutUser = async () => {
   const response = await fetch(`${process.env.BASE_URL}/users/logout`, {
@@ -72,6 +75,7 @@ export const logoutUser = async () => {
   const json = await response.json();
   return json;
 };
+
 
 export const createBooking = async (checkIn, checkOut, placeId) => {
   const response = await fetch(`${process.env.BASE_URL}/bookings/create`, {
@@ -87,3 +91,7 @@ export const createBooking = async (checkIn, checkOut, placeId) => {
   const result = await response.json();
   return result; 
 };
+
+// export const upDateUser = async () => {
+//   const response = await fetch(`${process.env.BASE_URL}/users/update`);
+// };

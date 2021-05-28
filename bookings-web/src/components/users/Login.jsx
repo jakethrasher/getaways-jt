@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { loginUser } from '../../services/placesApi';
+import PropTypes from 'prop-types';
 
-export default function Login() {
+export default function Login({ handleUser }) {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,8 +17,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = await loginUser(email, password);
-
-    console.log(user);
+    handleUser(user);
+   
     if(!user.status){
       history.push('/getaways');
     } else alert(user.message);
@@ -33,3 +34,7 @@ export default function Login() {
     </div>
   );
 }
+
+Login.propTypes = {
+  handleUser:PropTypes.func.isRequired,
+};

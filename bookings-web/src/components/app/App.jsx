@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Getaways from '../../containers/Getaways';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import HomePage from '../home/HomePage';
 import Header from '../header/Header';
 import Signup from '../users/Signup';
@@ -9,17 +9,38 @@ import DetailPage from '../places/DetailPage';
 import UserUpdate from '../user update/UserUpdate';
 
 export default function App() {
+  const [user, setUser] = useState('');
+
+  const handleUserChange = (user) => {
+    setUser(user);
+    // localStorage.setItem('USER', JSON.stringify(user));
+  };
+
   return (
     <>
-      <Header/>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/getaways" component={Getaways}/>
-        <Route exact path="/getaways/:id" component={DetailPage}/>
-        <Route exact path="/signup" component={Signup}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/update" component={UserUpdate}/>
-      </Switch>
+      <Router>
+        <Header user={user}/>
+        <Switch>
+          <Route exact path="/">
+            <HomePage/>
+          </Route>
+          <Route exact path="/getaways">
+            <Getaways/>
+          </Route>
+          <Route exact path="/getaways/:id">
+            <DetailPage/>
+          </Route>
+          <Route exact path="/signup">
+            <Signup/>
+          </Route>
+          <Route exact path="/login">
+            <Login handleUser={handleUserChange}/>
+          </Route>
+          <Route exact path="/update">
+            <UserUpdate/>
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 }

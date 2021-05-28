@@ -28,7 +28,7 @@ module.exports = Router()
 
       res.cookie('session', token, {
         httpOnly: true,
-        maxAge: ONE_DAY_IN_MS,
+        maxAge: 10000,
         // sameSite: 'Lax' | 'None' | 'Strict',
         // secure: true
       });
@@ -55,6 +55,7 @@ module.exports = Router()
   })
   .put('/update',verifyToken, async (req, res, next) => {
     const { username, email} = req.body
+    
     try {
       const user = await User.findOneAndUpdate({
         _id:req.user.id
@@ -64,11 +65,13 @@ module.exports = Router()
       },{
         new: true,
       })
+  
       res.send(user);
     } catch (err) {
       next(err)
     }
   })
+
   .get('/', async (req, res, next) => {
     try {
       const users = await User.find({});
