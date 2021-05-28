@@ -9,7 +9,6 @@ module.exports = Router()
     try {
       const start_date = new Date(req.body.start_date);
       const end_date = new Date(req.body.end_date);
-
       if (start_date > end_date) {
         throw new Error('Start date must be before the end date');
       }
@@ -37,8 +36,8 @@ module.exports = Router()
         state: 'reserved',
         total_price: place.price_per_night * total_nights,
       });
-
-      res.json(booking);
+      console.log(booking);
+      res.send(booking);
     } catch (err) {
       next(err);
     }

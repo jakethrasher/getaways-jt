@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+.listContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+    font-size: smaller;
+}
+.pageButtonContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.pagination{
+    margin: 1em;
+} 
+.pagination:active{
+    transition: 80ms linear;
+    transform: scale(1.1);
+    border-radius: 100%;
+    box-shadow: rgba(52, 54, 55, 0.2) 0px 8px 24px;
+}

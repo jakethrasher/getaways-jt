@@ -1,0 +1,35 @@
+.listItem{
+    list-style: none;
+    width: 16em;
+    margin: 1em;
+}
+.leftSection{
+    width: min-content;
+}
+.infoText{
+    margin: 0px;
+}
+.listPageImage{
+    width: 16em;
+    border-radius: 0.5em;
+}
+
+/* detail page*/
+.detailImage{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+.containerGrid{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.formStyle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+
