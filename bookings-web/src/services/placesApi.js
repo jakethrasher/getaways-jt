@@ -92,6 +92,8 @@ export const createBooking = async (checkIn, checkOut, placeId) => {
   return result; 
 };
 
-// export const upDateUser = async () => {
-//   const response = await fetch(`${process.env.BASE_URL}/users/update`);
-// };
+export const upDateUser = async () => {
+  const response = await fetch(`${process.env.BASE_URL}/users/update`);
+
+  console.log(response);
+};

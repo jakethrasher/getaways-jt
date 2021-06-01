@@ -9,17 +9,17 @@ import DetailPage from '../places/DetailPage';
 import UserUpdate from '../user update/UserUpdate';
 
 export default function App() {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(null);
 
   const handleUserChange = (user) => {
     setUser(user);
-    // localStorage.setItem('USER', JSON.stringify(user));
+    localStorage.setItem('USER', JSON.stringify(user));
   };
 
   return (
     <>
       <Router>
-        <Header user={user}/>
+        <Header user={user} handleUser={handleUserChange}/>
         <Switch>
           <Route exact path="/">
             <HomePage/>
